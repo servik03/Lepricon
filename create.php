@@ -1,10 +1,10 @@
 <?php
 // Метод Create
-if (isset($_POST['NAME']) && ($_POST['Description']) && isset($_POST['Created_at'])) {
+if (isset($_POST['Name']) && ($_POST['Description']) && isset($_POST['Created_at'])) {
      // Условие когда форма вызывает сама себя
-    if ($_POST['NAME'] && $_POST['Description'] && $_POST['Created_at']) {
+    if ($_POST['Name'] && $_POST['Description'] && $_POST['Created_at']) {
         //Проверяем чтобы все значения были заполнены connect to db
-        $Connect2DB = new PDO("pgsql:host=localhost; dbname=posgres", "postgres", 'postgres', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+        $Connect2DB = new PDO("pgsql:host=localhost; dbname=postgres", "postgres", 'postgres', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
         $Create2DB = $Connect2DB -> prepare ( "INSERT INTO Article (name, description, created_at) VALUES (:name, :description, :created_at )");
         $Create2DB -> bindParam(':name', $_POST['Name']);
         $Create2DB -> bindParam(':description', $_POST['Description']);
@@ -18,8 +18,6 @@ exit ( ); //Возвращаем в таблицу Index
 
 
 
-?>
-
 <html>
 <!-- Форма добавления данных -->
 <head>
@@ -28,7 +26,7 @@ exit ( ); //Возвращаем в таблицу Index
 
 <body>
 
-<form action="Create.php" method="post" name="Create" autocomplete="on" >
+<form method="post" name="Create" autocomplete="on" >
 
     <h1 style=" font-size: x-large"> Введите данные </h1>
 
