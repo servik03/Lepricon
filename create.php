@@ -1,10 +1,21 @@
 <?php
 // Метод Create
-if (isset($_POST['NAME']) && ($_POST['Description']) && isset($_POST['Created_at']))
- // Условие когда форма вызывает сама себя
-if ($_POST['NAME'] && $_POST['Description'] && $_POST['Created_at'])
-    //Проверяем чтобы все значения были заполнены connect to db
-    $Connect2DB = new PDO("postgresql:host=localhost; dbname=employses", "postgres", 'postgres', array());
+if (isset($_POST['NAME']) && ($_POST['Description']) && isset($_POST['Created_at'])) {
+     // Условие когда форма вызывает сама себя
+    if ($_POST['NAME'] && $_POST['Description'] && $_POST['Created_at']) {
+        //Проверяем чтобы все значения были заполнены connect to db
+        $Connect2DB = new PDO("pgsql:host=localhost; dbname=posgres", "postgres", 'postgres', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+        $Create2DB = $Connect2DB -> prepare ( "INSERT INTO Article (name, description, created_at) VALUES (:name, :description, :created_at )");
+        $Create2DB -> bindParam(':name', $_POST['Name']);
+        $Create2DB -> bindParam(':description', $_POST['Description']);
+        $Create2DB -> bindParam(':created_at', $_POST['Created_at']);
+        $Result = $Create2DB -> execute( );
+    }
+header ("Location: index.php");
+exit ( ); //Возвращаем в таблицу Index
+}
+?>
+
 
 
 ?>
