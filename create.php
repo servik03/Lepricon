@@ -12,7 +12,6 @@ if (isset($_POST['Name']) && ($_POST['Description']) && isset($_POST['Created_at
         $Result = $Create2DB -> execute( );
     }
 header ("Location: index.php");
-exit ( ); //Возвращаем в таблицу Index
 }
 ?>
 
