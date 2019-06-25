@@ -51,11 +51,12 @@ class Article
         }
 
 
-    public function deleteArticle($name, $description, $created_at,$id)
+    public function deleteArticle($id)
     {
 
             $ConnectDB = new PDO("pgsql:host=localhost; dbname=postgres", "postgres", 'postgres', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
             $stmt = $ConnectDB->prepare("DELETE FROM article WHERE id=:id");
+            $stmt->bindParam(':id', $id);
             return $stmt->execute();
 
     }

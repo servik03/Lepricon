@@ -6,7 +6,5 @@ $rows = $article->readArticle();
 // View
 require_once __DIR__.'/../View/index.php';
 
-?>
-
 
 

@@ -12,9 +12,8 @@ require_once __DIR__.'/../Model/Article.php';
 if (isset($_POST['Name']) && ($_POST['Description']) && isset($_POST['Created_at'])) {
     if ($_POST['Name'] && $_POST['Description'] && $_POST['Created_at']) {
         $article = new Article();
-        $Result = $article->updateArticleAll($_POST['Name']);
-        $Result = $article->updateArticleAll($_POST['Description']);
-        $Result = $article->updateArticleAll($_POST['Created_at']);
+        $Result = $article->updateArticleAll($_POST['Name'] && $_POST['Description'] && $_POST['Created_at']);
+
 
     }
     header ("Location: index.php");
@@ -22,6 +21,4 @@ if (isset($_POST['Name']) && ($_POST['Description']) && isset($_POST['Created_at
 }
 
 require_once __DIR__.'/../View/update.php';
-
-?>
 
