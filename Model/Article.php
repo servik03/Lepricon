@@ -51,7 +51,7 @@ class Article
         }
 
 
-    public function deleteArticle($name, $description, $created_at, $id)
+    public function deleteArticle($name, $description, $created_at,$id)
     {
 
             $ConnectDB = new PDO("pgsql:host=localhost; dbname=postgres", "postgres", 'postgres', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
@@ -62,5 +62,4 @@ class Article
 
 }
 
-?>
 
